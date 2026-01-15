@@ -14,6 +14,7 @@ export interface ToolContext {
   currentResult?: ToolResult<unknown> | null;
   userPreferences?: Record<string, unknown>;
   getPluginConfig?: <T = unknown>(key: string) => T | undefined;
+  /** Backend API functions provided by the host app */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   app?: Record<string, (...args: any[]) => any>;
 }
@@ -82,13 +83,13 @@ export interface ToolDefinition {
 /**
  * File upload configuration
  */
-export interface FileUploadConfig<T = unknown, J = unknown> {
+export interface FileUploadConfig {
   acceptedTypes: string[];
   handleUpload: (
     fileData: string,
     fileName: string,
     ...args: unknown[]
-  ) => ToolResult<T, J>;
+  ) => ToolResult<unknown, unknown>;
 }
 
 /**
@@ -150,7 +151,7 @@ export interface ToolPlugin<
   systemPrompt?: string;
 
   /** Optional file upload configuration */
-  fileUpload?: FileUploadConfig<T, J>;
+  fileUpload?: FileUploadConfig;
 
   /** Optional plugin-specific configuration */
   config?: ToolPluginConfig;
