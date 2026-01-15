@@ -12,13 +12,8 @@
  */
 
 import type { ToolPlugin, ToolContext, ToolResult } from "../common";
-import {
-  TOOL_DEFINITION,
-  TOOL_NAME,
-  type PdfToolData,
-  type PdfArgs,
-  type PdfJsonData,
-} from "./types";
+import { TOOL_DEFINITION, TOOL_NAME } from "./tools";
+import type { PdfToolData, PdfArgs, PdfJsonData } from "./types";
 import View from "./View.vue";
 import Preview from "./Preview.vue";
 
