@@ -35,7 +35,7 @@ import { ref, watch, computed } from "vue";
 import { marked } from "marked";
 import type { ToolResult } from "../common";
 import type { PdfToolData } from "./types";
-import { TOOL_NAME } from "./types";
+import { TOOL_NAME } from "./tools";
 
 const props = defineProps<{
   selectedResult: ToolResult<PdfToolData>;
