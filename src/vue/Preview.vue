@@ -24,8 +24,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { ToolResult } from "../common";
-import type { PdfToolData } from "./types";
+import type { ToolResult, PdfToolData } from "./types";
 
 const props = defineProps<{
   result: ToolResult<PdfToolData>;

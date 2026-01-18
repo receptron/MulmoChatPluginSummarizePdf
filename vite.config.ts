@@ -7,17 +7,23 @@ export default defineConfig({
   plugins: [vue(), tailwindcss()],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
-      name: "MulmoChatPlugin",
+      entry: {
+        index: resolve(__dirname, "src/index.ts"),
+        core: resolve(__dirname, "src/core/index.ts"),
+        vue: resolve(__dirname, "src/vue/index.ts"),
+      },
+      name: "MulmoChatPluginSummarizePdf",
       formats: ["es", "cjs"],
-      fileName: (format) => `index.${format === "es" ? "js" : "cjs"}`,
+      fileName: (format, entryName) =>
+        `${entryName}.${format === "es" ? "js" : "cjs"}`,
     },
     rollupOptions: {
-      external: ["vue"],
+      external: ["vue", "marked"],
       output: {
         exports: "named",
         globals: {
           vue: "Vue",
+          marked: "marked",
         },
         assetFileNames: "style.[ext]",
       },

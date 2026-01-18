@@ -33,9 +33,8 @@
 <script setup lang="ts">
 import { ref, watch, computed } from "vue";
 import { marked } from "marked";
-import type { ToolResult } from "../common";
-import type { PdfToolData } from "./types";
-import { TOOL_NAME } from "./tools";
+import type { ToolResult, PdfToolData } from "./types";
+import { TOOL_NAME } from "../core/plugin";
 
 const props = defineProps<{
   selectedResult: ToolResult<PdfToolData>;
