@@ -1,14 +1,24 @@
 /**
- * MulmoChat Plugin
+ * MulmoChat SummarizePdf Plugin
  *
- * See package.json for plugin details.
+ * Default export is the framework-agnostic core.
+ * For Vue implementation, import from "@mulmochat-plugin/summarize-pdf/vue"
+ *
+ * @example Default (Core - framework-agnostic)
+ * ```typescript
+ * import { pluginCore, TOOL_NAME, PdfToolData } from "@mulmochat-plugin/summarize-pdf";
+ * ```
+ *
+ * @example Vue implementation
+ * ```typescript
+ * import SummarizePdfPlugin from "@mulmochat-plugin/summarize-pdf/vue";
+ * import "@mulmochat-plugin/summarize-pdf/style.css";
+ * ```
  */
 
-import "./style.css";
+// Default export is core (framework-agnostic)
+export * from "./core";
+export { pluginCore as default } from "./core";
 
-import { plugin, createUploadedPdfResult } from "./plugin";
-import type { ToolPlugin } from "./common";
-
-export { createUploadedPdfResult };
-
-export default { plugin: plugin as ToolPlugin };
+// Re-export helper function for backward compatibility
+export { createUploadedPdfResult } from "./core";

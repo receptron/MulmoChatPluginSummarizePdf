@@ -1,21 +1,43 @@
 /**
- * MulmoChat SummarizePdf Plugin
+ * MulmoChat SummarizePdf Plugin Core (Framework-agnostic)
  *
- * A plugin for summarizing PDF files using Claude.
- *
- * @example Basic usage
- * ```typescript
- * import { plugin } from "@mulmochat-plugin/summarize-pdf";
- * import "@mulmochat-plugin/summarize-pdf/style.css";
- * // Use plugin directly
- * ```
+ * Contains the plugin logic without UI components.
+ * Can be used by any framework (Vue, React, etc.)
  */
 
-import type { ToolPlugin, ToolContext, ToolResult } from "../common";
-import { TOOL_DEFINITION, TOOL_NAME } from "./tools";
-import type { PdfToolData, PdfArgs, PdfJsonData } from "./types";
-import View from "./View.vue";
-import Preview from "./Preview.vue";
+import type {
+  ToolPluginCore,
+  ToolContext,
+  ToolResult,
+  ToolDefinition,
+  PdfToolData,
+  PdfArgs,
+  PdfJsonData,
+} from "./types";
+
+// ============================================================================
+// Tool Definition
+// ============================================================================
+
+export const TOOL_NAME = "summarizePDF";
+
+export const TOOL_DEFINITION: ToolDefinition = {
+  type: "function",
+  name: TOOL_NAME,
+  description:
+    "Summarize the content of a currently selected PDF file using Claude.",
+  parameters: {
+    type: "object",
+    properties: {
+      prompt: {
+        type: "string",
+        description:
+          "Instructions for Claude on how to summarize or analyze the PDF",
+      },
+    },
+    required: ["prompt"],
+  },
+};
 
 // ============================================================================
 // Helper Functions
@@ -37,10 +59,10 @@ export function createUploadedPdfResult(
 }
 
 // ============================================================================
-// Plugin Implementation
+// Execute Function
 // ============================================================================
 
-const summarizePDF = async (
+export const executeSummarizePdf = async (
   context: ToolContext,
   args: PdfArgs,
 ): Promise<ToolResult<PdfToolData, PdfJsonData>> => {
@@ -98,21 +120,16 @@ const summarizePDF = async (
 };
 
 // ============================================================================
-// Export
+// Core Plugin (without UI components)
 // ============================================================================
 
-/**
- * SummarizePdf plugin instance
- */
-export const plugin: ToolPlugin<PdfToolData, PdfJsonData, PdfArgs> = {
+export const pluginCore: ToolPluginCore<PdfToolData, PdfJsonData, PdfArgs> = {
   toolDefinition: TOOL_DEFINITION,
-  execute: summarizePDF,
+  execute: executeSummarizePdf,
   generatingMessage: "Summarizing PDF...",
   uploadMessage:
     "PDF file is available. Call 'summarizePDF' to see its summary",
   isEnabled: (startResponse) => !!startResponse?.hasAnthropicApiKey,
-  viewComponent: View,
-  previewComponent: Preview,
   fileUpload: {
     acceptedTypes: ["application/pdf"],
     handleUpload: createUploadedPdfResult,
