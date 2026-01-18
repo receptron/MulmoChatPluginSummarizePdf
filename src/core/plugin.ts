@@ -130,8 +130,11 @@ export const pluginCore: ToolPluginCore<PdfToolData, PdfJsonData, PdfArgs> = {
   uploadMessage:
     "PDF file is available. Call 'summarizePDF' to see its summary",
   isEnabled: (startResponse) => !!startResponse?.hasAnthropicApiKey,
-  fileUpload: {
-    acceptedTypes: ["application/pdf"],
-    handleUpload: createUploadedPdfResult,
-  },
+  inputHandlers: [
+    {
+      type: "file",
+      acceptedTypes: ["application/pdf"],
+      handleInput: createUploadedPdfResult,
+    },
+  ],
 };
