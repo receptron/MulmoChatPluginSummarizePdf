@@ -1,4 +1,6 @@
-# MulmoChat Plugin
+# @mulmochat-plugin/summarize-pdf
+
+[![npm version](https://badge.fury.io/js/%40mulmochat-plugin%2Fsummarize-pdf.svg)](https://www.npmjs.com/package/@mulmochat-plugin/summarize-pdf)
 
 A plugin for [MulmoChat](https://github.com/receptron/MulmoChat) - a multi-modal voice chat application with OpenAI's GPT-4 Realtime API.
 
@@ -43,6 +45,14 @@ yarn typecheck
 # Lint
 yarn lint
 ```
+
+## Test Prompts
+
+Try these prompts to test the plugin (after uploading a PDF):
+
+1. "Summarize this PDF document for me"
+2. "What are the main points in this PDF?"
+3. "Give me a brief overview of the uploaded document"
 
 ## License
 
