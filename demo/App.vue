@@ -69,7 +69,8 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { plugin } from "../src/vue";
-import type { ToolResult, ToolPlugin, PdfToolData } from "../src/vue";
+import type { ToolResult, ToolPlugin } from "gui-chat-protocol/vue";
+import type { PdfToolData } from "../src/core/types";
 
 // Plugin configuration
 const currentPlugin = plugin as unknown as ToolPlugin;

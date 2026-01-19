@@ -33,7 +33,8 @@
 <script setup lang="ts">
 import { ref, watch, computed } from "vue";
 import { marked } from "marked";
-import type { ToolResult, PdfToolData } from "./types";
+import type { ToolResult } from "gui-chat-protocol";
+import type { PdfToolData } from "../core/types";
 import { TOOL_NAME } from "../core/plugin";
 
 const props = defineProps<{

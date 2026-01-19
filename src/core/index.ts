@@ -5,33 +5,8 @@
  * Import from "@mulmochat-plugin/summarize-pdf" or "@mulmochat-plugin/summarize-pdf/core"
  */
 
-// Export all types
-export type {
-  BackendType,
-  ToolContextApp,
-  ToolContext,
-  ToolResult,
-  ToolResultComplete,
-  JsonSchemaProperty,
-  ToolDefinition,
-  StartApiResponse,
-  ToolSample,
-  InputHandler,
-  FileInputHandler,
-  ClipboardImageInputHandler,
-  UrlInputHandler,
-  TextInputHandler,
-  FileUploadConfig,
-  ConfigValue,
-  ConfigFieldSchema,
-  PluginConfigSchema,
-  ViewComponentProps,
-  PreviewComponentProps,
-  ToolPluginCore,
-  PdfToolData,
-  PdfArgs,
-  PdfJsonData,
-} from "./types";
+// Export plugin-specific types
+export type { PdfToolData, PdfArgs, PdfJsonData } from "./types";
 
 // Export plugin utilities
 export {

@@ -24,7 +24,8 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { ToolResult, PdfToolData } from "./types";
+import type { ToolResult } from "gui-chat-protocol";
+import type { PdfToolData } from "../core/types";
 
 const props = defineProps<{
   result: ToolResult<PdfToolData>;

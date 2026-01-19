@@ -8,7 +8,8 @@
 // Import styles for Vue components
 import "../style.css";
 
-import type { ToolPlugin, PdfToolData, PdfArgs, PdfJsonData } from "./types";
+import type { ToolPlugin } from "gui-chat-protocol/vue";
+import type { PdfToolData, PdfArgs, PdfJsonData } from "../core/types";
 import { pluginCore } from "../core/plugin";
 import View from "./View.vue";
 import Preview from "./Preview.vue";
@@ -26,32 +27,8 @@ export const plugin: ToolPlugin<PdfToolData, PdfJsonData, PdfArgs> = {
   previewComponent: Preview,
 };
 
-// Re-export types
-export type { ToolPlugin, ToolPluginConfig } from "./types";
-
-// Re-export core types for convenience
-export type {
-  BackendType,
-  ToolContextApp,
-  ToolContext,
-  ToolResult,
-  ToolResultComplete,
-  JsonSchemaProperty,
-  ToolDefinition,
-  StartApiResponse,
-  ToolSample,
-  InputHandler,
-  FileUploadConfig,
-  ConfigValue,
-  ConfigFieldSchema,
-  PluginConfigSchema,
-  ViewComponentProps,
-  PreviewComponentProps,
-  ToolPluginCore,
-  PdfToolData,
-  PdfArgs,
-  PdfJsonData,
-} from "./types";
+// Re-export plugin-specific types
+export type { PdfToolData, PdfArgs, PdfJsonData } from "../core/types";
 
 // Re-export core plugin utilities
 export {
