@@ -5,14 +5,8 @@
  * Can be used by any framework (Vue, React, etc.)
  */
 
-import type {
-  ToolPluginCore,
-  ToolContext,
-  ToolResult,
-  PdfToolData,
-  PdfArgs,
-  PdfJsonData,
-} from "./types";
+import type { ToolPluginCore, ToolContext, ToolResult } from "gui-chat-protocol";
+import type { PdfToolData, PdfArgs, PdfJsonData } from "./types";
 import { TOOL_NAME, TOOL_DEFINITION } from "./definition";
 
 // Re-export for convenience
