@@ -100,7 +100,7 @@ export const pluginCore: ToolPluginCore<PdfToolData, PdfJsonData, PdfArgs> = {
   toolDefinition: TOOL_DEFINITION,
   execute: executeSummarizePdf,
   generatingMessage: "Summarizing PDF...",
-  uploadMessage:
+  waitingMessage:
     "PDF file is available. Call 'summarizePDF' to see its summary",
   isEnabled: (startResponse) => !!startResponse?.hasAnthropicApiKey,
   inputHandlers: [
