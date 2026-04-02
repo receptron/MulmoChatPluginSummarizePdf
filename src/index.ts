@@ -17,8 +17,8 @@
  */
 
 // Default export is core (framework-agnostic)
-export * from "./core";
-export { pluginCore as default } from "./core";
+export * from "./core/index";
+export { pluginCore as default } from "./core/index";
 
 // Re-export helper function for backward compatibility
-export { createUploadedPdfResult } from "./core";
+export { createUploadedPdfResult } from "./core/index";
