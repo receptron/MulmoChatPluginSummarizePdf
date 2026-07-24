@@ -11,8 +11,11 @@ Displays and summarizes uploaded PDF documents.
 ## Installation
 
 ```bash
-yarn add @mulmochat-plugin/summarize-pdf
+yarn add @mulmochat-plugin/summarize-pdf gui-chat-protocol
 ```
+
+> `gui-chat-protocol` is a peer dependency — install it alongside the plugin; the host application provides the runtime and this plugin only declares the compatible range.
+
 
 ## Usage
 
