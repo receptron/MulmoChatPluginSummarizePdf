@@ -35,14 +35,17 @@ export function createUploadedPdfResult(
 // Execute Function
 // ============================================================================
 
+// context is nullable on purpose: hosts that run the plugin without client-side
+// state (MulmoClaude's server bridge) pass an empty or missing context, and
+// reading through it unguarded threw a TypeError instead of returning a result.
 export const executeSummarizePdf = async (
-  context: ToolContext,
+  context: ToolContext | null | undefined,
   args: PdfArgs,
 ): Promise<ToolResult<PdfToolData, PdfJsonData>> => {
   const { prompt } = args;
 
   // Get the current PDF data from context
-  const currentPdfData = context.currentResult?.data as PdfToolData | undefined;
+  const currentPdfData = context?.currentResult?.data as PdfToolData | undefined;
 
   if (!currentPdfData?.pdfData) {
     return {
@@ -53,7 +56,7 @@ export const executeSummarizePdf = async (
     };
   }
 
-  if (!context.app?.summarizePdf) {
+  if (!context?.app?.summarizePdf) {
     return {
       message: "summarizePdf function not available",
       instructions: "Tell the user that the PDF summarization failed.",
