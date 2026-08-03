@@ -7,6 +7,7 @@
 
 import type { ToolPluginCore, ToolContext, ToolResult } from "gui-chat-protocol";
 import type { PdfToolData, PdfArgs, PdfJsonData } from "./types";
+import { isPdfToolData, isSummarizePdfResponse } from "./hostResponse";
 import { TOOL_NAME, TOOL_DEFINITION } from "./definition";
 
 // Re-export for convenience
@@ -45,7 +46,10 @@ export const executeSummarizePdf = async (
   const { prompt } = args;
 
   // Get the current PDF data from context
-  const currentPdfData = context?.currentResult?.data as PdfToolData | undefined;
+  const currentResultData = context?.currentResult?.data;
+  const currentPdfData = isPdfToolData(currentResultData)
+    ? currentResultData
+    : undefined;
 
   if (!currentPdfData?.pdfData) {
     return {
@@ -68,6 +72,13 @@ export const executeSummarizePdf = async (
       prompt,
       pdfData: currentPdfData.pdfData,
     });
+    if (!isSummarizePdfResponse(data)) {
+      return {
+        message: "summarizePdf returned an unrecognized response",
+        instructions: "Tell the user that the PDF summarization failed.",
+      };
+    }
+
     const summary = data.summary || "";
 
     return {
