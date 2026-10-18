@@ -9,10 +9,4 @@
 export type { PdfToolData, PdfArgs, PdfJsonData } from "./types";
 
 // Export plugin utilities
-export {
-  TOOL_NAME,
-  TOOL_DEFINITION,
-  createUploadedPdfResult,
-  executeSummarizePdf,
-  pluginCore,
-} from "./plugin";
+export { TOOL_NAME, TOOL_DEFINITION, createUploadedPdfResult, executeSummarizePdf, pluginCore } from "./plugin";

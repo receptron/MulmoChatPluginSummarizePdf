@@ -11,9 +11,7 @@
         @change="handleFileUpload"
         class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
       />
-      <p v-if="result.data?.fileName" class="mt-2 text-sm text-gray-600">
-        Loaded: {{ result.data.fileName }}
-      </p>
+      <p v-if="result.data?.fileName" class="mt-2 text-sm text-gray-600">Loaded: {{ result.data.fileName }}</p>
     </div>
 
     <!-- Summary Input Section -->
@@ -41,12 +39,7 @@
     <div v-if="ViewComponent" class="bg-white rounded-lg p-5 mb-5 shadow-md">
       <h2 class="text-gray-600 text-xl mb-4">View Component</h2>
       <div class="border border-gray-200 rounded h-[600px]">
-        <component
-          :is="ViewComponent"
-          :selectedResult="result"
-          :sendTextMessage="handleSendTextMessage"
-          @updateResult="handleUpdate"
-        />
+        <component :is="ViewComponent" :selectedResult="result" :sendTextMessage="handleSendTextMessage" @updateResult="handleUpdate" />
       </div>
     </div>
 

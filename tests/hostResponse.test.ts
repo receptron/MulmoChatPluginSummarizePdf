@@ -25,11 +25,7 @@ describe("isSummarizePdfResponse", () => {
 
   test("rejects values that are not a response object", () => {
     [null, undefined, "ok", 7].forEach((value) => {
-      assert.equal(
-        isSummarizePdfResponse(value),
-        false,
-        `should reject ${JSON.stringify(value)}`,
-      );
+      assert.equal(isSummarizePdfResponse(value), false, `should reject ${JSON.stringify(value)}`);
     });
   });
 });
@@ -40,10 +36,7 @@ describe("isPdfToolData", () => {
   });
 
   test("accepts a card that already carries a summary", () => {
-    assert.equal(
-      isPdfToolData({ pdfData: "base64", fileName: "a.pdf", summary: "cats" }),
-      true,
-    );
+    assert.equal(isPdfToolData({ pdfData: "base64", fileName: "a.pdf", summary: "cats" }), true);
   });
 
   test("rejects another plugin's card", () => {
