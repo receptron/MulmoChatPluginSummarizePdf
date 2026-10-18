@@ -31,13 +31,7 @@ export const plugin: ToolPlugin<PdfToolData, PdfJsonData, PdfArgs> = {
 export type { PdfToolData, PdfArgs, PdfJsonData } from "../core/types";
 
 // Re-export core plugin utilities
-export {
-  TOOL_NAME,
-  TOOL_DEFINITION,
-  createUploadedPdfResult,
-  executeSummarizePdf,
-  pluginCore,
-} from "../core/plugin";
+export { TOOL_NAME, TOOL_DEFINITION, createUploadedPdfResult, executeSummarizePdf, pluginCore } from "../core/plugin";
 
 // Export components for direct use
 export { View, Preview };

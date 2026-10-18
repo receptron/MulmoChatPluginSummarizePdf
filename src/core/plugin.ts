@@ -20,10 +20,7 @@ export { TOOL_NAME, TOOL_DEFINITION } from "./definition";
 /**
  * Create a ToolResult for an uploaded PDF file
  */
-export function createUploadedPdfResult(
-  pdfData: string,
-  fileName: string,
-): ToolResult<PdfToolData, PdfJsonData> {
+export function createUploadedPdfResult(pdfData: string, fileName: string): ToolResult<PdfToolData, PdfJsonData> {
   return {
     toolName: TOOL_NAME,
     data: { pdfData, fileName },
@@ -39,24 +36,17 @@ export function createUploadedPdfResult(
 // context is nullable on purpose: hosts that run the plugin without client-side
 // state (MulmoClaude's server bridge) pass an empty or missing context, and
 // reading through it unguarded threw a TypeError instead of returning a result.
-export const executeSummarizePdf = async (
-  context: ToolContext | null | undefined,
-  args: PdfArgs,
-): Promise<ToolResult<PdfToolData, PdfJsonData>> => {
+export const executeSummarizePdf = async (context: ToolContext | null | undefined, args: PdfArgs): Promise<ToolResult<PdfToolData, PdfJsonData>> => {
   const { prompt } = args;
 
   // Get the current PDF data from context
   const currentResultData = context?.currentResult?.data;
-  const currentPdfData = isPdfToolData(currentResultData)
-    ? currentResultData
-    : undefined;
+  const currentPdfData = isPdfToolData(currentResultData) ? currentResultData : undefined;
 
   if (!currentPdfData?.pdfData) {
     return {
-      message:
-        "No PDF file available to summarize. Please select a PDF file first.",
-      instructions:
-        "Tell the user that no PDF file is currently selected and they need to upload a PDF file first.",
+      message: "No PDF file available to summarize. Please select a PDF file first.",
+      instructions: "Tell the user that no PDF file is currently selected and they need to upload a PDF file first.",
     };
   }
 
@@ -97,8 +87,7 @@ export const executeSummarizePdf = async (
     };
   } catch (error) {
     console.error("PDF summarization failed", error);
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return {
       message: `PDF summarization failed: ${errorMessage}`,
       instructions: `Tell the user that the PDF summarization failed with error: ${errorMessage}`,
@@ -114,8 +103,7 @@ export const pluginCore: ToolPluginCore<PdfToolData, PdfJsonData, PdfArgs> = {
   toolDefinition: TOOL_DEFINITION,
   execute: executeSummarizePdf,
   generatingMessage: "Summarizing PDF...",
-  waitingMessage:
-    "PDF file is available. Call 'summarizePDF' to see its summary",
+  waitingMessage: "PDF file is available. Call 'summarizePDF' to see its summary",
   isEnabled: (startResponse) => !!startResponse?.hasAnthropicApiKey,
   inputHandlers: [
     {
