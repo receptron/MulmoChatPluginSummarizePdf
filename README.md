@@ -1,6 +1,7 @@
 # @mulmochat-plugin/summarize-pdf
 
 [![npm version](https://badge.fury.io/js/%40mulmochat-plugin%2Fsummarize-pdf.svg)](https://www.npmjs.com/package/@mulmochat-plugin/summarize-pdf)
+[![scoria](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/receptron/MulmoChatPluginSummarizePdf/badges/scoria.json)](https://github.com/receptron/MulmoChatPluginSummarizePdf/actions/workflows/scoria.yml)
 
 A plugin for [MulmoChat](https://github.com/receptron/MulmoChat) - a multi-modal voice chat application with OpenAI's GPT-4 Realtime API.
 
